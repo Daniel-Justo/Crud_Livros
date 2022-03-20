@@ -1,0 +1,34 @@
+<form action="/updateLivro/<%=livro.id%>" method="post" name="addbook" enctype="multipart/form-data" >
+    <label for="titulo">Titulo do Livro</label>
+    <input type="text" name="titulo" id="" value="<%= livro.titulo %> ">
+    <label for="descricao">Descrição</label>
+    <input type="text" name="descricao" value="<%= livro.descricao %> ">
+    <select  name="genero" id="">
+        <option value="<%=livro.genero%>"><%=livro.genero%></option>
+        <option value="romance">Romance</option>
+        <option value="ação e aventura">Ação</option>
+        <option value="drama">Drama</option>
+        <option value="mistério">Mistério</option>
+        <option value="fantasia">Fantasia</option>
+        <option value="terror">Terror</option>
+        <option value="suspense">Suspense</option>
+        <option value="crime real">Crime real</option>
+        <option value="biografia">Biografia</option>
+        <option value="policial">Policial</option>
+        <option value="história">História</option>
+        <option value="ficção cientifica">Ficção cientifica</option>
+        <option value="infantil">Infantil</option>
+        <option value="outro">Outro</option>
+    </select>
+    <label for="editora">Editora</label>
+    <input type="text" name="editora" value="<%= livro.editora %> ">
+    <label for="autor">Autor/Autora</label>
+    <input type="text" name="autor" value="<%= livro.autor %> ">
+    <label for="dataDePublicacao">Data de Publicação</label>
+    <input type="date" name="dataDePublicacao" value="<%=livro.dataDePublicacao.toLocaleDateString%>">
+    <label for="capa">Capa do Livro</label>
+    <img src="<%= livro.capa %> " height="346" width="241">
+    <input type="file" name="capa" value="<%=livro.capa%>">
+
+    <button type="submit">Atualizar</button>
+</form>

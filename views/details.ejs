@@ -1,0 +1,15 @@
+<div>
+    <div>
+        <img src="<%= livro.capa %> " alt="" width="241" height="346">
+    </div>
+    <div>
+        <h1><%= livro.titulo %> </h1>
+        <p><%= livro.descricao %> </p>
+        <ul>
+            <li>Genero: <%= livro.genero %> </li>
+            <li>Autor: <%= livro.autor  %>  </li>
+            <li>Editora: <%= livro.editora %>  </li>
+            <li >Data de Publicação:  <%= livro.dataDePublicacao.toLocaleDateString() %></li>
+        </ul>
+    </div>
+</div>

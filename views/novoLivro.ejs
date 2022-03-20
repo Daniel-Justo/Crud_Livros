@@ -1,0 +1,35 @@
+<h1>Adicionar novo livro</h1>
+
+<form action="/adicionarLivro" method="post" name="addbook" enctype="multipart/form-data" >
+    <label for="titulo">Titulo do Livro</label>
+    <input type="text" name="titulo" id="">
+    <label for="descricao">Descrição</label>
+    <input type="text" name="descricao">
+    <select name="genero" id="">
+        <option value="0">selecione a categoria</option>
+        <option value="romance">Romance</option>
+        <option value="ação e aventura">Ação</option>
+        <option value="drama">Drama</option>
+        <option value="mistério">Mistério</option>
+        <option value="fantasia">Fantasia</option>
+        <option value="terror">Terror</option>
+        <option value="suspense">Suspense</option>
+        <option value="crime real">Crime real</option>
+        <option value="biografia">Biografia</option>
+        <option value="policial">Policial</option>
+        <option value="história">História</option>
+        <option value="ficção cientifica">Ficção cientifica</option>
+        <option value="infantil">Infantil</option>
+        <option value="outro">Outro</option>
+    </select>
+    <label for="editora">Editora</label>
+    <input type="text" name="editora">
+    <label for="autor">Autor/Autora</label>
+    <input type="text" name="autor">
+    <label for="dataDePublicacao">Data de Publicação</label>
+    <input type="date" name="dataDePublicacao">
+    <label for="capa">Capa do Livro</label>
+    <input type="file" name="capa">
+
+    <button type="submit">Enviar</button>
+</form>

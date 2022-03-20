@@ -1,0 +1,14 @@
+<% if (livros.length > 0){ %>
+    <%for(let livro of livros){%>
+        <div>
+            <a href="/livros/<%= livro.id %> "><h2><%= livro.titulo %></h2></a>
+            <img src="<%=livro.capa %>" alt="" style="max-width: 241px; max-height: 346px;">
+            <a href="/delete/<%= livro.id %> "><button>Deletar</button></a>
+            <a href="/edit/<%= livro.id %> "><button>Editar</button></a>
+        </div>
+    <%}%>
+<%}else{%>
+    <h1>Não temos livros</h1>
+<%} %>
+
+<a href="/novoLivro"><button>Novo livro</button></a>
