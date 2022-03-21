@@ -1,6 +1,6 @@
 const Livros = require('./model')
-
-const acceptedImageTypes = ['jpeg', 'png']
+const fs = require('fs')
+const acceptedImageTypes = ['jpg', 'png']
 
 exports.showAll = async (req, res)=>{
     const livros = await Livros.findAll()
@@ -10,8 +10,8 @@ exports.showAll = async (req, res)=>{
 exports.create = async (req, res) =>{
     const capa = req.file.filename
     const filextension = capa.slice((capa.lastIndexOf('.')- 1 >>> 0) + 2)
+    const capaurl = '/imgs/'+capa
     if(acceptedImageTypes.includes(filextension)){
-        const capaurl = '/imgs/'+capa
         await Livros.create({
             titulo: req.body.titulo,
             descricao: req.body.descricao,
@@ -23,7 +23,8 @@ exports.create = async (req, res) =>{
         })
     res.redirect('/')}
     else{
-        res.redirect('/novoLivro')
+        fs.unlink('./public'+capaurl, ()=>
+        res.redirect('/adicionarLivro'))
     }
 }
 
@@ -43,7 +44,9 @@ exports.editPage = async (req,res)=>{
 
 exports.update = async(req, res)=>{
     const capa = req.file.filename
+    const filextension = capa.slice((capa.lastIndexOf('.')- 1 >>> 0) + 2)
     const capaurl = '/imgs/'+capa
+    if(acceptedImageTypes.includes(filextension)){
     const id = req.params.id
     await Livros.update({
         titulo: req.body.titulo,
@@ -55,8 +58,11 @@ exports.update = async(req, res)=>{
         dataDePublicacao: req.body.dataDePublicacao
     }, 
         {where: {id:id}})
-    res.redirect('/')
-
+    res.redirect('/')}else{
+        fs.unlink('./public'+capaurl, ()=>{
+            res.redirect(`/edit/${req.params.id}`)
+        })
+    }
 }
 
 exports.delete = async (req,res)=>{
